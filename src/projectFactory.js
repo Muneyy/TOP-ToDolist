@@ -1,13 +1,14 @@
-const createProject = function () {
-    const form  = document.getElementById('add-project');
+const createProject = function (form) {
     const title = form.elements['project-title'].value;
     const projectItem = createProjectObject(title);
     projectItem.type = "project";
+    projectItem.triggered = 0;
+    // projectItem.list = new Object();
     return projectItem;
 }
 
-const createProjectObject = (title, index, type) => {
-    return {title, index, type};
+const createProjectObject = (title, triggered, index, type, selected) => {
+    return {title, triggered, index, type, selected};
 }
 
 export {createProject};

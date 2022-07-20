@@ -1,8 +1,9 @@
 import { projectItemsArray } from "./arrayInitialize";
-import * as cardFunctionalities from "./removecard";
+import * as cardFunctionalitiesDOM from "./cardFunctionalitiesDOM";
 
-const appendToContent = function(todoItem, todoItemsIndex, todoItemsArray, uniqueCardId) {
+const appendToContent = function(item, index, array) {
     // create card 
+    console.log("HUH?")
     const card = document.createElement("div");
     card.classList.add("card-todo");
 
@@ -11,15 +12,17 @@ const appendToContent = function(todoItem, todoItemsIndex, todoItemsArray, uniqu
     const cardDesc = document.createElement("p");
     const cardDate = document.createElement("p");
     const cardPriority = document.createElement("p");
-    cardTitle.textContent = todoItem.title;
-    cardDesc.textContent = todoItem.description;
-    cardDate.textContent = todoItem.date;
-    cardPriority.textContent = todoItem.priority;
+    cardTitle.textContent = item.title;
+    cardDesc.textContent = item.description;
+    cardDate.textContent = item.date;
+    cardPriority.textContent = item.priority;
 
     // create remove button
     const contentToDo = document.querySelector(".content-todo");
-    cardFunctionalities.assignCardID(card, todoItem, uniqueCardId);
-    cardFunctionalities.addRemoveFunctionality(card, todoItemsIndex, contentToDo, todoItemsArray, uniqueCardId, todoItem);
+
+    //move this to index and just return thee card div?
+    // cardFunctionalities.assignCardID(card, item, index);
+    // cardFunctionalities.addRemoveFunctionality(card, item, index, array);
     
 
     //append card content
@@ -32,9 +35,21 @@ const appendToContent = function(todoItem, todoItemsIndex, todoItemsArray, uniqu
     //get main content div to append the card to it
     
     contentToDo.appendChild(card);
+    return card;
 };
 
-const appendToProject = function(item, index, projectItemsArray, uniqueCardId) {
+const appendToContentOnRemove = function (array) {
+    array.forEach(item => {
+        let index = array.indexOf(item, 0)
+        item.index = index;
+        const card = appendToContent(item, index, array);
+        cardFunctionalitiesDOM.assignCardID(card, item, index);
+        cardFunctionalitiesDOM.addRemoveFunctionality(card, item, index, array);
+
+    })
+}
+
+const appendToProject = function(item, isSelected) {
     // create card 
     const card = document.createElement("div");
     card.classList.add("card-project");
@@ -47,19 +62,38 @@ const appendToProject = function(item, index, projectItemsArray, uniqueCardId) {
     // create remove button
     const contentProject = document.querySelector(".content-project");
 
+    
+    // cardFunctionalities.addSelectFunctionality(card, projectItemsArray, index);
+    // cardFunctionalities.assignCardID(card, item, uniqueCardId);
+
     // NOTE: this also assigns the index as the id
     // NOT GOOD, better to separate functionality
-    cardFunctionalities.assignCardID(card, item, uniqueCardId);
-    cardFunctionalities.addRemoveFunctionality(card, index, contentProject, projectItemsArray, uniqueCardId, item);
+    // Does logic outside of DOM such as setting index of objects
+    // cardFunctionalities.addRemoveFunctionality(card, index, contentProject, projectItemsArray, uniqueCardId, item);
     
 
     //append card content
+    // if (isSelected == 1) {
+    //     card.classList.add("selected-project");
+    // }
     card.appendChild(cardTitle);
     
 
     //get main content div to append the card to it
     
     contentProject.appendChild(card);
+    return card;
 }
 
-export {appendToContent, appendToProject};
+const appendToProjectOnRemove = function (array) {
+    array.forEach(item => {
+        let index = array.indexOf(item, 0)
+        item.index = index;
+        const card = appendToProject(item, index, array);
+        cardFunctionalitiesDOM.assignCardID(card, item, index);
+        cardFunctionalitiesDOM.addSelectFunctionality(card, item, index, array);
+        
+    })
+}
+
+export {appendToContent, appendToProject, appendToContentOnRemove, appendToProjectOnRemove};

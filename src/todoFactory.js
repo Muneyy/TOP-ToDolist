@@ -1,4 +1,4 @@
-const createToDoItem = function () {
+const createItem = function () {
     const form  = document.getElementById('add-todo');
     const title = form.elements['title'].value;
     const description = form.elements['description'].value;
@@ -13,4 +13,4 @@ const createToDoObject = (title, description, date, priority, index, type) => {
     return {title, description, date, priority, index, type}
 }
 
-export {createToDoItem};
+export {createItem};

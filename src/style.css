@@ -466,3 +466,7 @@ input[type="date"] {
   width: 20px;
   height: 20px;
 }
+
+.selected-project {
+  background-color: cadetblue;
+}
