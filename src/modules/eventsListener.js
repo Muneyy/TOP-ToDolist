@@ -1,11 +1,11 @@
-import './style.css';
+// import './style.css';
 // import {todoItemsArray, projectItemsArray} from './arrayInitialize';
 import { createItem }  from './todoFactory';
 import * as DOMStuff from './DOMStuff';
 
 import * as projectFactory from './projectFactory';
 import * as cardFunctionalitiesDOM from "./cardFunctionalitiesDOM";
-import { projects } from '.';
+import { projects } from '../index';
 import { adjustItemIndex } from './cardFunctionalitiesLogic';
 
 function onSubmitForm(form, project, index) {
@@ -51,6 +51,7 @@ function onSubmitForm(form, project, index) {
             const card = DOMStuff.appendToContent(item, index, projects[index]);
             cardFunctionalitiesDOM.assignCardID(card, item, indexUse);
             cardFunctionalitiesDOM.addRemoveFunctionality(card, item, indexUse, projects[index]);
+            cardFunctionalitiesDOM.addDoneFunctionality(card, item, indexUse, projects[index]);
         })
     }
 

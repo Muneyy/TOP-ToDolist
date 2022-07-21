@@ -49,6 +49,7 @@ const appendToContentOnRemove = function (array) {
         const card = appendToContent(item, index, array);
         cardFunctionalitiesDOM.assignCardID(card, item, index);
         cardFunctionalitiesDOM.addRemoveFunctionality(card, item, index, array);
+        cardFunctionalitiesDOM.addDoneFunctionality(card, item, index, array);
 
     })
 }

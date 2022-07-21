@@ -465,6 +465,20 @@ input[type="date"] {
 .remove-button {
   width: 20px;
   height: 20px;
+  background-image: url(./images/remove.svg);
+  background-position: center;
+  border: 0;
+  background-color: aliceblue;
+  
+}
+
+.done-button {
+  width: 20px;
+  height: 20px;
+  background-image: url(./images/done-blue.svg);
+  background-position: center;
+  border: 0;
+  background-color: aliceblue;
 }
 
 .selected-project {
@@ -473,6 +487,23 @@ input[type="date"] {
 }
 
 .done {
-  text-decoration: dashed;
-  background-color: aqua;
+  /* text-decoration: dashed; */
+  /* background-color: aqua; */
+  border-color:rgb(179, 174, 174) ;
+
+}
+
+.done .done-button {
+  width: 20px;
+  height: 20px;
+  background-image: url(./images/done-green.svg);
+  background-position: center;
+  border: 0;
+  background-color: aliceblue;
+}
+
+.done > p,
+.done > h3 {
+  text-decoration: line-through;
+  color: gray;
 }

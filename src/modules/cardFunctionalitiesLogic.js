@@ -1,4 +1,4 @@
-import './style.css';
+// import './style.css' from '../style.css';
 import * as DOMStuff from './DOMStuff';
 import * as cardFunctionalitiesDOM from "./cardFunctionalitiesDOM";
 

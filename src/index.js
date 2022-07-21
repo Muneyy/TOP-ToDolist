@@ -1,11 +1,11 @@
 import './style.css';
 // import {todoItemsArray, projectItemsArray} from './arrayInitialize';
-import { createItem }  from './todoFactory';
-import * as DOMStuff from './DOMStuff';
+import { createItem }  from './modules/todoFactory';
+import * as DOMStuff from './modules/DOMStuff';
 
-import * as projectFactory from './projectFactory';
-import * as cardFunctionalitiesDOM from "./cardFunctionalitiesDOM";
-import {eventsListener} from "./eventsListener";
+import * as projectFactory from './modules/projectFactory';
+import * as cardFunctionalitiesDOM from "./modules/cardFunctionalitiesDOM";
+import {eventsListener} from "./modules/eventsListener";
 
 // let todoItemsArray = [];
 

@@ -1,7 +1,7 @@
 import { adjustItemIndex, projectArrayCallTwice } from "./cardFunctionalitiesLogic";
 import { appendToContentOnRemove, appendToProjectOnRemove, } from "./DOMStuff";
 import {eventsListener, removeEventsListener} from "./eventsListener";
-import { projects } from ".";
+import { projects } from "../index";
 
 const addRemoveFunctionality = function(card, item, index, array) {
     //create button
@@ -22,10 +22,10 @@ const addRemoveFunctionality = function(card, item, index, array) {
 
 
 
-        const doneItem = array.splice(index, 1);
-        console.log(doneItem[0]);
-        doneItem[0].done = 1;
-        array.push(doneItem[0]);
+        array.splice(index, 1);
+        // console.log(doneItem[0]);
+        // doneItem[0].done = 1;
+        // array.push(doneItem[0]);
         const cardToRemove = document.getElementById(`card${index}`);
         content.removeChild(cardToRemove);
         adjustItemIndex(array, index, item);
@@ -53,6 +53,18 @@ const addRemoveFunctionality = function(card, item, index, array) {
     removeButton.classList.add("remove-button");
     card.appendChild(removeButton);
 }
+
+const addDoneFunctionality = function (card, item, index, array) {
+    const doneButton = document.createElement("button");
+    doneButton.classList.add("done-button");
+
+    doneButton.addEventListener('click', () => {
+        const cardDone = document.getElementById(`card${index}`);
+        card.classList.toggle("done");
+    })
+    card.appendChild(doneButton);
+}
+
 
 const assignCardID = function(card, item, id) {
     if (item.type == "card") {
@@ -131,4 +143,4 @@ const addSelectFunctionality = function(card, item, index, array) {
 
 }
 
-export {addRemoveFunctionality, assignCardID, addSelectFunctionality};
+export {addRemoveFunctionality, assignCardID, addSelectFunctionality, addDoneFunctionality};
