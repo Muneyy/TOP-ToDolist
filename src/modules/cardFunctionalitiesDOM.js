@@ -61,6 +61,7 @@ const addDoneFunctionality = function (card, item, index, array) {
     doneButton.addEventListener('click', () => {
         const cardDone = document.getElementById(`card${index}`);
         card.classList.toggle("done");
+        item.done = 1;
     })
     card.appendChild(doneButton);
 }
