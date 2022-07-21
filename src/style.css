@@ -469,4 +469,10 @@ input[type="date"] {
 
 .selected-project {
   background-color: cadetblue;
+  user-select: none;
+}
+
+.done {
+  text-decoration: dashed;
+  background-color: aqua;
 }

@@ -1,6 +1,6 @@
 import { adjustItemIndex, projectArrayCallTwice } from "./cardFunctionalitiesLogic";
 import { appendToContentOnRemove, appendToProjectOnRemove, } from "./DOMStuff";
-import {eventsListener} from "./eventsListener";
+import {eventsListener, removeEventsListener} from "./eventsListener";
 import { projects } from ".";
 
 const addRemoveFunctionality = function(card, item, index, array) {
@@ -22,7 +22,10 @@ const addRemoveFunctionality = function(card, item, index, array) {
 
 
 
-
+        const doneItem = array.splice(index, 1);
+        console.log(doneItem[0]);
+        doneItem[0].done = 1;
+        array.push(doneItem[0]);
         const cardToRemove = document.getElementById(`card${index}`);
         content.removeChild(cardToRemove);
         adjustItemIndex(array, index, item);
@@ -37,7 +40,7 @@ const addRemoveFunctionality = function(card, item, index, array) {
 
 
         // NOTE: move this part of the code to a separate module
-        // array.splice(index, 1);
+        
         // let indexPlaceholder = 0;
         // array.forEach(card => {
         //     card.index = uniqueCardId;
@@ -60,8 +63,9 @@ const assignCardID = function(card, item, id) {
 };
 
 const addSelectFunctionality = function(card, item, index, array) {
-    card.addEventListener('click', () => {
+    card.addEventListener('click', (event) => {
         // projectArrayCallTwice(array);
+        event.preventDefault();
 
         // const cardToSelect = document.getElementById(`project${index}`);
         // content.removeChild(cardToRemove);
@@ -80,12 +84,6 @@ const addSelectFunctionality = function(card, item, index, array) {
         };
         appendToContentOnRemove(projects[index]);
         
-        //might be what's causing errors (recursive call?)
-        appendToProjectOnRemove(array);
-
-
-
-
         array.forEach(project => {
             project.selected = 0;
             // console.log(`Does this run?`)
@@ -93,15 +91,29 @@ const addSelectFunctionality = function(card, item, index, array) {
         array[index].selected = 1;
         console.log(`The array is below (check for selected):`)
         console.log(array);
+        //might be what's causing errors (recursive call?)
+        appendToProjectOnRemove(array);
+
+
+
+
+
+
+        // remove event listeners from formCard
+        const formCard  = document.getElementById('add-todo');
+        formCard.replaceWith(formCard.cloneNode(true));
+
+
         array.forEach(project => {
             // console.log(`The array being for looped: ${array}`);
             // console.log(`project.selected? = ${project.selected}`);
             // console.log(`project.list = ${project.list}`);
             // console.log(`project.listo = ${project.list.listo[0]}`);
             if (project.selected == 1) {
+                const formCard  = document.getElementById('add-todo');
+                // removeEventsListener(formCard);
                 const cardSelected = document.getElementById(`project${index}`);
                 cardSelected.classList.add('selected-project');
-                const formCard  = document.getElementById('add-todo');
 
                 // console.log(`project that is inpuuted: ${project.triggered}`);
                 eventsListener(formCard, project, project.index); 

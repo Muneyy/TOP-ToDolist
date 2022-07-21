@@ -105,17 +105,14 @@ formProject.addEventListener('submit', (event) => {
         contentProject.removeChild(contentProject.firstChild);
     };
 
+    
+    // DOMStuff.appendToProjectOnRemove(projectArray);
     // for testing, only the first project object is selected.
-    if (projectArray.length == 0) {
-        projectObject.selected = 1;
-        projectArray.push(projectObject);
-        console.log(`This is project array: ${projectArray}`)
-        projects.push([]);
-    } else if (projectArray.length != 0) {
-        projectObject.selected = 0;
-        projectArray.push(projectObject);
-        projects.push([]);
-    }
+    
+    projectObject.selected = 0;
+    projectArray.push(projectObject);
+    projects.push([]);
+    
 
     console.log(`This is projects consisting of arrays: ${projects}`);
 
@@ -129,7 +126,7 @@ formProject.addEventListener('submit', (event) => {
         project.index = index;
         const card = DOMStuff.appendToProject(project, project.selected);
         cardFunctionalitiesDOM.assignCardID(card, project, index);
-        cardFunctionalitiesDOM.addSelectFunctionality(card, project, index, projectArray, arrayProjects);
+        cardFunctionalitiesDOM.addSelectFunctionality(card, project, index, projectArray);
 
     })
     // console.log(`projectSelected = ${projectSelected[0].index}`)

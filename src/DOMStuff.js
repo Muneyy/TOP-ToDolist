@@ -3,7 +3,6 @@ import * as cardFunctionalitiesDOM from "./cardFunctionalitiesDOM";
 
 const appendToContent = function(item, index, array) {
     // create card 
-    console.log("HUH?")
     const card = document.createElement("div");
     card.classList.add("card-todo");
 
@@ -16,6 +15,8 @@ const appendToContent = function(item, index, array) {
     cardDesc.textContent = item.description;
     cardDate.textContent = item.date;
     cardPriority.textContent = item.priority;
+
+    
 
     // create remove button
     const contentToDo = document.querySelector(".content-todo");
@@ -33,6 +34,9 @@ const appendToContent = function(item, index, array) {
     
 
     //get main content div to append the card to it
+    if (item.done == 1) {
+        card.classList.add("done");
+    }
     
     contentToDo.appendChild(card);
     return card;
@@ -57,6 +61,10 @@ const appendToProject = function(item, isSelected) {
     // create content of card 
     const cardTitle = document.createElement("h1");
     cardTitle.textContent = item.title;
+
+    if (item.selected == 1) {
+        card.classList.add("selected-project")
+    }
 
 
     // create remove button
