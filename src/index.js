@@ -114,7 +114,7 @@ formProject.addEventListener('submit', (event) => {
     projects.push([]);
     
 
-    console.log(`This is projects consisting of arrays: ${projects}`);
+    // console.log(`This is projects consisting of arrays: ${projects}`);
 
     //push current project to projects array
 
@@ -127,6 +127,7 @@ formProject.addEventListener('submit', (event) => {
         const card = DOMStuff.appendToProject(project, project.selected);
         cardFunctionalitiesDOM.assignCardID(card, project, index);
         cardFunctionalitiesDOM.addSelectFunctionality(card, project, index, projectArray);
+        cardFunctionalitiesDOM.addRemoveFunctionality(card, project, index, projectArray)
 
     })
     // console.log(`projectSelected = ${projectSelected[0].index}`)

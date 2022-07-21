@@ -9,7 +9,7 @@ const adjustItemIndex = function (array, index, item) {
         card.index = indexPlaceholder;
         indexPlaceholder += 1;
     });
-    console.log(array);
+    // console.log(array);
 }
 
 const projectArrayCallTwice = function (projectArray) {

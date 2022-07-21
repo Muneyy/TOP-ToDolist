@@ -101,6 +101,7 @@ const appendToProjectOnRemove = function (array) {
         const card = appendToProject(item, index, array);
         cardFunctionalitiesDOM.assignCardID(card, item, index);
         cardFunctionalitiesDOM.addSelectFunctionality(card, item, index, array);
+        cardFunctionalitiesDOM.addRemoveFunctionality(card, item, index, array);
         
     })
 }

@@ -8,46 +8,54 @@ const addRemoveFunctionality = function(card, item, index, array) {
     const removeButton = document.createElement("button");
     removeButton.classList.add("remove-button");
     // card.id = `${uniqueCardId}`;
+
+    if (item.type == "project") {
+        removeButton.addEventListener('click', () => {
+
+            const content = document.querySelector(".content-project");
     
-    //logic to remove button for DOM elements only
-    removeButton.addEventListener('click', () => {
+            array.splice(index, 1);
+            projects.splice(index, 1);
+            console.log(`splicing projects[index]: ${projects[index]}`);
+            console.log(`projects: ${projects}`);
+            // console.log(doneItem[0]);
+            // doneItem[0].done = 1;
+            // array.push(doneItem[0]);
+            const cardToRemove = document.getElementById(`project${index}`);
+            content.removeChild(cardToRemove);
+            adjustItemIndex(array, index, item);
+            while(content.firstChild) {
+                content.removeChild(content.firstChild);
+            };
+            appendToProjectOnRemove(array);
 
-        
-
-
-
-        const content = document.querySelector(".content-todo");
-
-        
-
-
-
-        array.splice(index, 1);
-        // console.log(doneItem[0]);
-        // doneItem[0].done = 1;
-        // array.push(doneItem[0]);
-        const cardToRemove = document.getElementById(`card${index}`);
-        content.removeChild(cardToRemove);
-        adjustItemIndex(array, index, item);
-        while(content.firstChild) {
-            content.removeChild(content.firstChild);
-        };
-        appendToContentOnRemove(array);
-
-            
-        
-
-
-
-        // NOTE: move this part of the code to a separate module
-        
-        // let indexPlaceholder = 0;
-        // array.forEach(card => {
-        //     card.index = uniqueCardId;
-        //     indexPlaceholder += 1;
-        // });
-        // console.log(array);
-    })
+            const contenttodo = document.querySelector(".content-todo");
+            while(contenttodo.firstChild) {
+                contenttodo.removeChild(contenttodo.firstChild);
+            };
+            // appendToContentOnRemove(array);
+    
+        })
+    }
+    if (item.type == "card") {
+        //logic to remove button for DOM elements only
+        removeButton.addEventListener('click', () => {
+    
+            const content = document.querySelector(".content-todo");
+    
+            array.splice(index, 1);
+            // console.log(doneItem[0]);
+            // doneItem[0].done = 1;
+            // array.push(doneItem[0]);
+            const cardToRemove = document.getElementById(`card${index}`);
+            content.removeChild(cardToRemove);
+            adjustItemIndex(array, index, item);
+            while(content.firstChild) {
+                content.removeChild(content.firstChild);
+            };
+            appendToContentOnRemove(array);
+        })
+    }
 
     //append remove button to card
     removeButton.classList.add("remove-button");
@@ -109,8 +117,8 @@ const addSelectFunctionality = function(card, item, index, array) {
             // console.log(`Does this run?`)
         })
         array[index].selected = 1;
-        console.log(`The array is below (check for selected):`)
-        console.log(array);
+        // console.log(`The array is below (check for selected):`)
+        // console.log(array);
         //might be what's causing errors (recursive call?)
         appendToProjectOnRemove(array);
 

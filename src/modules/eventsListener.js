@@ -10,7 +10,7 @@ import { adjustItemIndex } from './cardFunctionalitiesLogic';
 
 function onSubmitForm(form, project, index) {
     // console.log(projects);
-    console.log(`Should only occur once :/`);
+    // console.log(`Should only occur once :/`);
         
 
 
@@ -36,10 +36,10 @@ function onSubmitForm(form, project, index) {
     if (project.selected == 1) {
         // projects[index];
         // console.log(`This is projects.index: ${projects[index]}`);
-        console.log(`This is index: ${index}`);
-        console.log(projects);
+        // console.log(`This is index: ${index}`);
+        // console.log(projects);
         projects[index].push(todoItem);
-        console.log(`How many times does this occur?`)
+        // console.log(`How many times does this occur?`)
         projects[index].forEach(item => {
             let indexTemp = projects[index].indexOf(item, 0)
             let indexUse = indexTemp;
