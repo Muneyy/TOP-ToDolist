@@ -6,11 +6,12 @@ const createItem = function () {
     const priority = form.elements['priority'].value;
     const todoItem = createToDoObject(title, description, date, priority);
     todoItem.type = "card";
+    todoItem.done = 0;
     return todoItem;
 }
 
-const createToDoObject = (title, description, date, priority, index, type) => {
-    return {title, description, date, priority, index, type}
+const createToDoObject = (title, description, date, priority, index, type, done) => {
+    return {title, description, date, priority, index, type, done}
 }
 
 export {createItem};

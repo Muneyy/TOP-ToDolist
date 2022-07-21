@@ -60,8 +60,15 @@ const addDoneFunctionality = function (card, item, index, array) {
 
     doneButton.addEventListener('click', () => {
         const cardDone = document.getElementById(`card${index}`);
-        card.classList.toggle("done");
-        item.done = 1;
+        
+        if (item.done == 1) {
+            item.done = 0;
+            card.classList.toggle("done");
+        } else if (item.done == 0) {
+            item.done = 1;
+            card.classList.toggle("done");
+        }
+        
     })
     card.appendChild(doneButton);
 }
