@@ -83,7 +83,7 @@ import {eventsListener} from "./modules/eventsListener";
 let projectArray = [];
 let projects = [];
 
-// window.localStorage.clear()
+// window.localStorage.clear();
 
 
 
@@ -123,10 +123,12 @@ formProject.addEventListener('submit', (event) => {
         contentProject.removeChild(contentProject.firstChild);
     };
 
-    
     // DOMStuff.appendToProjectOnRemove(projectArray);
     // for testing, only the first project object is selected.
-    
+    if (window.localStorage.getItem('toggle') == 1) {
+        let temp = localStorage.getItem('projectArray');
+        projectArray = JSON.parse(temp);
+    }
     projectObject.selected = 0;
     projectArray.push(projectObject);
     projects.push([]);

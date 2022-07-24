@@ -77,9 +77,13 @@ const addDoneFunctionality = function (card, item, index, array) {
         if (item.done == 1) {
             item.done = 0;
             card.classList.toggle("done");
+            // localStorage.setItem('projectArray', JSON.stringify(array));
+            // localStorage.setItem('projects', JSON.stringify(projects));
         } else if (item.done == 0) {
             item.done = 1;
             card.classList.toggle("done");
+            // localStorage.setItem('projectArray', JSON.stringify(array));
+            // localStorage.setItem('projects', JSON.stringify(projects));
         }
         
     })
