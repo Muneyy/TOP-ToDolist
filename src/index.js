@@ -81,10 +81,29 @@ import {eventsListener} from "./modules/eventsListener";
 // })
 
 let projectArray = [];
-// let projectSelected = [];
-
 let projects = [];
-let stabilizer = 0;
+
+// window.localStorage.clear()
+
+
+
+if (window.localStorage.getItem('toggle') == 1) {
+    let temp = localStorage.getItem('projectArray');
+    let projectArray = JSON.parse(temp);
+    console.log(`works?`)
+    console.log(projectArray);//     console.log(temp1);
+    projects = JSON.parse(localStorage.getItem('projects'));
+    console.log(projects);
+    projectArray.forEach(project => {
+        console.log(`Huh?`);
+        let index = projectArray.indexOf(project, 0);
+        project.index = index;
+        const card = DOMStuff.appendToProject(project, project.selected);
+        cardFunctionalitiesDOM.assignCardID(card, project, index);
+        cardFunctionalitiesDOM.addSelectFunctionality(card, project, index, projectArray);
+        cardFunctionalitiesDOM.addRemoveFunctionality(card, project, index, projectArray)
+    })
+}
 
 
 //MAIN PROBLEM concers eventsListener and cardFuncDom
@@ -95,7 +114,6 @@ const formProject = document.getElementById('add-project');
 
 formProject.addEventListener('submit', (event) => {
     event.preventDefault();
-
     //create a project object
     const projectObject = projectFactory.createProject(formProject);
 
@@ -130,11 +148,20 @@ formProject.addEventListener('submit', (event) => {
         cardFunctionalitiesDOM.addRemoveFunctionality(card, project, index, projectArray)
 
     })
+    localStorage.setItem('projectArray', JSON.stringify(projectArray));
+    localStorage.setItem('projects', JSON.stringify(projects));
+    localStorage.setItem('toggle', 1);
+    console.log(localStorage.getItem('projectArray'));
+    console.log(typeof localStorage.getItem('projectArray'));
+    console.log(typeof JSON.parse(localStorage.getItem('projectArray')));
+    console.log(JSON.parse(localStorage.getItem('projectArray')))
     // console.log(`projectSelected = ${projectSelected[0].index}`)
     // console.table(projectArray);
     // console.log(projectSelected);
-
+    
 })
+
+// window.localStorage.clear()
 
 
 // const formCard  = document.getElementById('add-todo');

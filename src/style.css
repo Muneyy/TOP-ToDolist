@@ -376,6 +376,7 @@ input[type="date"] {
     display: flex;
     gap: 8px;
     align-items: center;
+    flex-flow: row wrap;
 }
 
 .whole-container {
@@ -385,16 +386,25 @@ input[type="date"] {
 
 .header {
   grid-column: 1 / 3;
-  background-color: aqua;
+  /* background-color: aqua; */
   height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.header > p {
+  font-size: 64px;
 }
 
 .project-sidebar {
   grid-column: 1 / 2;
-  background-color:blanchedalmond;
+  /* background-color:blanchedalmond; */
   height: 90vh;
   display: flex;
   justify-content: center;
+  
 }
 
 .project-tab {
@@ -404,6 +414,7 @@ input[type="date"] {
   width: 80%;
   padding: 10px 20px;
   border-radius: 15px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
 .card-project {
@@ -413,18 +424,40 @@ input[type="date"] {
   height: 50px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0 20px;
   box-sizing: border-box;
   gap: 20px;
+  transition: all 0.1s ease;
+  border-top: 0;
+  /* border-bottom: 0; */
+  border-right: 0;
+}
+
+.card-project.transition {
+  /* user-select: none;
+  border-left-width: 25px;
+  border-color: green;
+  transition: 0.1s ease; */
+  /* transform: translate(-3%); */
+}
+
+.card-project:hover {
+  transform: scale(1.02);
+}
+
+.card-project:hover:active {
+  transform: scale(1.03);
 }
 
 .content {
   grid-column: 2 / 3;
-  background-color: bisque;
+  /* background-color: bisque; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
 }
 
 .form-placeholder {
@@ -442,6 +475,7 @@ input[type="date"] {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
 .content-project {
@@ -451,15 +485,27 @@ input[type="date"] {
 }
 
 .card-todo {
-  border-radius: 5px;
+  /* border-radius: 5px; */
   border: 1px solid black;
   width: 100%;
   height: 50px;
-  display: flex;
-  justify-content: space-between;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* align-items: center; */
+  display: grid;
+  grid-template-columns: 2fr 15fr 2fr 1fr 1fr 1fr;
   align-items: center;
   padding: 0 20px;
   box-sizing: border-box;
+  transition: 0.2s ease;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+
+}
+
+.card-todo:hover {
+  transform: scale(1.01);
 }
 
 .remove-button {
@@ -482,8 +528,12 @@ input[type="date"] {
 }
 
 .selected-project {
-  background-color: cadetblue;
+  /* background-color: cadetblue; */
   user-select: none;
+  border-left-width: 10px;
+  border-color: green;
+  transition: 0.1s ease;
+  /* color: white; */
 }
 
 .done {

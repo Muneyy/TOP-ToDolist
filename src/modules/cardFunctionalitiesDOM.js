@@ -34,6 +34,9 @@ const addRemoveFunctionality = function(card, item, index, array) {
                 contenttodo.removeChild(contenttodo.firstChild);
             };
             // appendToContentOnRemove(array);
+            localStorage.setItem('projectArray', JSON.stringify(array));
+            localStorage.setItem('projects', JSON.stringify(projects));
+            // localStorage.setItem('toggle', 1);
     
         })
     }
@@ -54,6 +57,8 @@ const addRemoveFunctionality = function(card, item, index, array) {
                 content.removeChild(content.firstChild);
             };
             appendToContentOnRemove(array);
+            localStorage.setItem('projectArray', JSON.stringify(array));
+            localStorage.setItem('projects', JSON.stringify(projects));
         })
     }
 
@@ -144,7 +149,7 @@ const addSelectFunctionality = function(card, item, index, array) {
                 cardSelected.classList.add('selected-project');
 
                 // console.log(`project that is inpuuted: ${project.triggered}`);
-                eventsListener(formCard, project, project.index); 
+                eventsListener(formCard, project, project.index, array); 
             }
         })
         
@@ -153,8 +158,10 @@ const addSelectFunctionality = function(card, item, index, array) {
         //     content.removeChild(content.firstChild);
         // };
         // appendToProjectOnRemove(array);
-        
 
+        
+        localStorage.setItem('projectArray', JSON.stringify(array));
+        localStorage.setItem('projects', JSON.stringify(projects));
     })
 
 }

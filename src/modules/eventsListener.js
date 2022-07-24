@@ -8,7 +8,7 @@ import * as cardFunctionalitiesDOM from "./cardFunctionalitiesDOM";
 import { projects } from '../index';
 import { adjustItemIndex } from './cardFunctionalitiesLogic';
 
-function onSubmitForm(form, project, index) {
+function onSubmitForm(form, project, index, array) {
     // console.log(projects);
     // console.log(`Should only occur once :/`);
         
@@ -54,16 +54,18 @@ function onSubmitForm(form, project, index) {
             cardFunctionalitiesDOM.addDoneFunctionality(card, item, indexUse, projects[index]);
         })
     }
+    localStorage.setItem('projectArray', JSON.stringify(array));
+    localStorage.setItem('projects', JSON.stringify(projects));
 
 
     //loops through the current selected project's array and displays everything
     
 }
 
-const eventsListener = function (form, project, index) {
+const eventsListener = function (form, project, index, array) {
     form.addEventListener('submit', (event) => {
         event.preventDefault();
-        onSubmitForm(form, project, index)
+        onSubmitForm(form, project, index, array)
     });
         // // console.log(projects);
         
