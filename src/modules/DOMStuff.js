@@ -42,14 +42,14 @@ const appendToContent = function(item, index, array) {
     return card;
 };
 
-const appendToContentOnRemove = function (array) {
+const appendToContentOnRemove = function (array, projArray) {
     array.forEach(item => {
         let index = array.indexOf(item, 0)
         item.index = index;
         const card = appendToContent(item, index, array);
         cardFunctionalitiesDOM.assignCardID(card, item, index);
-        cardFunctionalitiesDOM.addRemoveFunctionality(card, item, index, array);
-        cardFunctionalitiesDOM.addDoneFunctionality(card, item, index, array);
+        cardFunctionalitiesDOM.addRemoveFunctionality(card, item, index, array, projArray);
+        cardFunctionalitiesDOM.addDoneFunctionality(card, item, index, array, projArray);
 
     })
 }
@@ -101,7 +101,7 @@ const appendToProjectOnRemove = function (array) {
         const card = appendToProject(item, index, array);
         cardFunctionalitiesDOM.assignCardID(card, item, index);
         cardFunctionalitiesDOM.addSelectFunctionality(card, item, index, array);
-        cardFunctionalitiesDOM.addRemoveFunctionality(card, item, index, array);
+        cardFunctionalitiesDOM.addRemoveFunctionality(card, item, index, array, array);
         
     })
 }

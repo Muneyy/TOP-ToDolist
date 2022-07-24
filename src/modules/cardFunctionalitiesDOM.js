@@ -3,7 +3,7 @@ import { appendToContentOnRemove, appendToProjectOnRemove, } from "./DOMStuff";
 import {eventsListener, removeEventsListener} from "./eventsListener";
 import { projects } from "../index";
 
-const addRemoveFunctionality = function(card, item, index, array) {
+const addRemoveFunctionality = function(card, item, index, array, projArray) {
     //create button
     const removeButton = document.createElement("button");
     removeButton.classList.add("remove-button");
@@ -34,7 +34,7 @@ const addRemoveFunctionality = function(card, item, index, array) {
                 contenttodo.removeChild(contenttodo.firstChild);
             };
             // appendToContentOnRemove(array);
-            localStorage.setItem('projectArray', JSON.stringify(array));
+            localStorage.setItem('projectArray', JSON.stringify(projArray));
             localStorage.setItem('projects', JSON.stringify(projects));
             // localStorage.setItem('toggle', 1);
     
@@ -56,8 +56,8 @@ const addRemoveFunctionality = function(card, item, index, array) {
             while(content.firstChild) {
                 content.removeChild(content.firstChild);
             };
-            appendToContentOnRemove(array);
-            localStorage.setItem('projectArray', JSON.stringify(array));
+            appendToContentOnRemove(array, projArray);
+            localStorage.setItem('projectArray', JSON.stringify(projArray));
             localStorage.setItem('projects', JSON.stringify(projects));
         })
     }
@@ -67,7 +67,7 @@ const addRemoveFunctionality = function(card, item, index, array) {
     card.appendChild(removeButton);
 }
 
-const addDoneFunctionality = function (card, item, index, array) {
+const addDoneFunctionality = function (card, item, index, array, projArray) {
     const doneButton = document.createElement("button");
     doneButton.classList.add("done-button");
 
@@ -77,13 +77,13 @@ const addDoneFunctionality = function (card, item, index, array) {
         if (item.done == 1) {
             item.done = 0;
             card.classList.toggle("done");
-            // localStorage.setItem('projectArray', JSON.stringify(array));
-            // localStorage.setItem('projects', JSON.stringify(projects));
+            localStorage.setItem('projectArray', JSON.stringify(projArray));
+            localStorage.setItem('projects', JSON.stringify(projects));
         } else if (item.done == 0) {
             item.done = 1;
             card.classList.toggle("done");
-            // localStorage.setItem('projectArray', JSON.stringify(array));
-            // localStorage.setItem('projects', JSON.stringify(projects));
+            localStorage.setItem('projectArray', JSON.stringify(projArray));
+            localStorage.setItem('projects', JSON.stringify(projects));
         }
         
     })

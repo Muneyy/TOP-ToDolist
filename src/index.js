@@ -101,7 +101,7 @@ if (window.localStorage.getItem('toggle') == 1) {
         const card = DOMStuff.appendToProject(project, project.selected);
         cardFunctionalitiesDOM.assignCardID(card, project, index);
         cardFunctionalitiesDOM.addSelectFunctionality(card, project, index, projectArray);
-        cardFunctionalitiesDOM.addRemoveFunctionality(card, project, index, projectArray)
+        cardFunctionalitiesDOM.addRemoveFunctionality(card, project, index, projectArray, projectArray);
     })
 }
 
@@ -147,7 +147,7 @@ formProject.addEventListener('submit', (event) => {
         const card = DOMStuff.appendToProject(project, project.selected);
         cardFunctionalitiesDOM.assignCardID(card, project, index);
         cardFunctionalitiesDOM.addSelectFunctionality(card, project, index, projectArray);
-        cardFunctionalitiesDOM.addRemoveFunctionality(card, project, index, projectArray)
+        cardFunctionalitiesDOM.addRemoveFunctionality(card, project, index, projectArray, projectArray);
 
     })
     localStorage.setItem('projectArray', JSON.stringify(projectArray));

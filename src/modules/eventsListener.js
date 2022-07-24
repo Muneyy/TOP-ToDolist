@@ -50,8 +50,8 @@ function onSubmitForm(form, project, index, array) {
             
             const card = DOMStuff.appendToContent(item, index, projects[index]);
             cardFunctionalitiesDOM.assignCardID(card, item, indexUse);
-            cardFunctionalitiesDOM.addRemoveFunctionality(card, item, indexUse, projects[index]);
-            cardFunctionalitiesDOM.addDoneFunctionality(card, item, indexUse, projects[index]);
+            cardFunctionalitiesDOM.addRemoveFunctionality(card, item, indexUse, projects[index], array);
+            cardFunctionalitiesDOM.addDoneFunctionality(card, item, indexUse, projects[index], array);
         })
     }
     localStorage.setItem('projectArray', JSON.stringify(array));
