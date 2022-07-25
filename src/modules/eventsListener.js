@@ -39,14 +39,33 @@ function onSubmitForm(form, project, index, array) {
         // console.log(`This is index: ${index}`);
         // console.log(projects);
         projects[index].push(todoItem);
-        // console.log(`How many times does this occur?`)
-        projects[index].forEach(item => {
+
+        // SORTING
+        // let tempArray = [];
+        // // console.log(`How many times does this occur?`)
+        // projects[index].forEach(item => {
+        //     let indexTemp = projects[index].indexOf(item, 0)
+        //     let indexUse = indexTemp;
+        //     if (item.done == 0) {
+        //         // const moveToBottom = projects[index].splice(indexUse, 1);
+        //         tempArray.push(item);
+        //     }
+        // })
+        // projects[index].forEach(item => {
+        //     let indexTemp = projects[index].indexOf(item, 0)
+        //     let indexUse = indexTemp;
+        //     if (item.done == 1) {
+        //         // const moveToBottom = projects[index].splice(indexUse, 1);
+        //         tempArray.push(item);
+        //     }
+        // })
+        tempArray.forEach(item => {
             let indexTemp = projects[index].indexOf(item, 0)
             let indexUse = indexTemp;
-            if (item.done == 1) {
-                const moveToBottom = projects[index].splice(indexUse, 1);
-                projects[index].push(moveToBottom[0]);
-            }
+            // if (item.done == 1) {
+            //     const moveToBottom = projects[index].splice(indexUse, 1);
+            //     projects[index].push(moveToBottom[0]);
+            //
             
             const card = DOMStuff.appendToContent(item, index, projects[index]);
             cardFunctionalitiesDOM.assignCardID(card, item, indexUse);
@@ -56,6 +75,8 @@ function onSubmitForm(form, project, index, array) {
         localStorage.setItem('projectArray', JSON.stringify(array));
         localStorage.setItem('projects', JSON.stringify(projects));
     }
+
+
 
 
     //loops through the current selected project's array and displays everything

@@ -66,12 +66,12 @@ const addRemoveFunctionality = function(card, item, index, array, projArray) {
                 content.removeChild(content.firstChild);
             };
             appendToContentOnRemove(array, projArray);
-            localStorage.setItem('projectArray', JSON.stringify(projectArray));
             //bug exists here
-            if (array.length == 0) {
-                let tempIndex = projects.indexOf(array);
-                projects.splice(tempIndex, 1);
-            }
+            // if (array.length == 0) {
+            //     let tempIndex = projects.indexOf(array);
+            //     projects.splice(tempIndex, 1);
+            // }
+            localStorage.setItem('projectArray', JSON.stringify(projArray));
             localStorage.setItem('projects', JSON.stringify(projects));
         })
     }

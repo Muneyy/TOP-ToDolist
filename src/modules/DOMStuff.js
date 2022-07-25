@@ -45,6 +45,7 @@ const appendToContent = function(item, index, array) {
 
 const appendToContentOnRemove = function (array, projArray) {
     if (array) {
+        
         array.forEach(item => {
             let index = array.indexOf(item, 0)
             item.index = index;
@@ -103,6 +104,8 @@ const appendToProjectOnRemove = function (array) {
         item.index = index;
         const card = appendToProject(item, index, array);
         cardFunctionalitiesDOM.assignCardID(card, item, index);
+
+
         cardFunctionalitiesDOM.addSelectFunctionality(card, item, index, projectArray);
         cardFunctionalitiesDOM.addRemoveFunctionality(card, item, index, projectArray, projectArray);
         

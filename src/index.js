@@ -21,8 +21,7 @@ clearWindow.addEventListener('click', () => {
 
 
 if (window.localStorage.getItem('toggle') == 1) {
-    let temp = localStorage.getItem('projectArray');
-    let projectArray = JSON.parse(temp);
+    projectArray = JSON.parse(localStorage.getItem('projectArray'));
     console.log(`works?`)
     console.log(projectArray);//     console.log(temp1);
     console.log("BUT WHY IS THIS AN ARRAY?");
@@ -42,7 +41,6 @@ if (window.localStorage.getItem('toggle') == 1) {
         // localStorage.setItem('projects', JSON.stringify(projects));
         // localStorage.setItem('toggle', 1);
     })
-    window.localStorage.setItem('toggle', 2);
 }
 
 
