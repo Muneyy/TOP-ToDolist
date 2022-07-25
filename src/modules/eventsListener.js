@@ -59,7 +59,7 @@ function onSubmitForm(form, project, index, array) {
         //         tempArray.push(item);
         //     }
         // })
-        tempArray.forEach(item => {
+        projects[index].forEach(item => {
             let indexTemp = projects[index].indexOf(item, 0)
             let indexUse = indexTemp;
             // if (item.done == 1) {
