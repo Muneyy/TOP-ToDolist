@@ -7,81 +7,14 @@ import * as projectFactory from './modules/projectFactory';
 import * as cardFunctionalitiesDOM from "./modules/cardFunctionalitiesDOM";
 import {eventsListener} from "./modules/eventsListener";
 
-// let todoItemsArray = [];
-
-//GOAL: only create todoItemsArray when a project is created
-//Treat a project as a folder which will contain its own array
-// such that that array will contain the to-do items for that specific
-// project/flder
-
-//if content elements are not wiped, then the id does not get renamed
-//conflict with selected attribute, and .display attribute
-
-// let currentProject = [];
-
-
-
-// const formCard  = document.getElementById('add-todo');
-// let index = 0;
-// let uniqueCardId = 0;
-// let uniqueProjectId = 0;
-
-
-
-// formCard.addEventListener('submit', (event) => {   
-//     event.preventDefault();
-
-//     const todoItem = createToDoItem(formCard);
-//     todoItemsArray.push(todoItem);
-//     const contentToDo = document.querySelector(".content-todo");
-//     // while(contentToDo.firstChild) {
-//     //     contentToDo.removeChild(contentToDo.firstChild);
-//     // };
-
-
-//     for (const item of todoItemsArray) {
-//         // item.index = uniqueCardId;
-
-//         if (item.display != 1) {
-//             DOMStuff.appendToContent(item, item.index, todoItemsArray, uniqueCardId);
-//         }
-//         item.display = 1;
-//     }
-//     uniqueCardId += 1;
-//     // console.log(todoItemsArray);
-// });
-
-// const formProject = document.getElementById('add-project');
-
-// formProject.addEventListener('submit', (event) => {
-//     event.preventDefault();
-
-//     const projectObject = createProject(formProject);
-
-//     projectItemsArray.push(projectObject);
-
-//     const contentProject = document.querySelector(".content-project");
-//     // while(contentProject.firstChild) {
-//     //     contentProject.removeChild(contentProject.firstChild);
-//     // };
-
-//     for (const item of projectItemsArray) {
-//         // item.index = uniqueCardId;
-//         if (item.display != 1) {
-//             DOMStuff.appendToProject(item, item.index, projectItemsArray, uniqueProjectId);
-//         }
-//         item.display = 1;
-//         // console.log(item.list);
-//     }
-//     uniqueProjectId += 1;
-
-
-
-
-// })
 
 let projectArray = [];
 let projects = [];
+
+const clearWindow = document.querySelector(".clear-window");
+clearWindow.addEventListener('click', () => {
+    window.localStorage.clear();
+})
 
 // window.localStorage.clear();
 
@@ -92,17 +25,24 @@ if (window.localStorage.getItem('toggle') == 1) {
     let projectArray = JSON.parse(temp);
     console.log(`works?`)
     console.log(projectArray);//     console.log(temp1);
+    console.log("BUT WHY IS THIS AN ARRAY?");
+    console.log(typeof projectArray);   
     projects = JSON.parse(localStorage.getItem('projects'));
     console.log(projects);
     projectArray.forEach(project => {
-        console.log(`Huh?`);
+        console.log(`THE PROJECT >>>>>>>>`);
+        console.log(project);
         let index = projectArray.indexOf(project, 0);
         project.index = index;
         const card = DOMStuff.appendToProject(project, project.selected);
         cardFunctionalitiesDOM.assignCardID(card, project, index);
         cardFunctionalitiesDOM.addSelectFunctionality(card, project, index, projectArray);
         cardFunctionalitiesDOM.addRemoveFunctionality(card, project, index, projectArray, projectArray);
+        // localStorage.setItem('projectArray', JSON.stringify(temp));
+        // localStorage.setItem('projects', JSON.stringify(projects));
+        // localStorage.setItem('toggle', 1);
     })
+    window.localStorage.setItem('toggle', 2);
 }
 
 
@@ -128,6 +68,7 @@ formProject.addEventListener('submit', (event) => {
     if (window.localStorage.getItem('toggle') == 1) {
         let temp = localStorage.getItem('projectArray');
         projectArray = JSON.parse(temp);
+        projects = JSON.parse(localStorage.getItem('projects'));
     }
     projectObject.selected = 0;
     projectArray.push(projectObject);
@@ -153,14 +94,6 @@ formProject.addEventListener('submit', (event) => {
     localStorage.setItem('projectArray', JSON.stringify(projectArray));
     localStorage.setItem('projects', JSON.stringify(projects));
     localStorage.setItem('toggle', 1);
-    console.log(localStorage.getItem('projectArray'));
-    console.log(typeof localStorage.getItem('projectArray'));
-    console.log(typeof JSON.parse(localStorage.getItem('projectArray')));
-    console.log(JSON.parse(localStorage.getItem('projectArray')))
-    // console.log(`projectSelected = ${projectSelected[0].index}`)
-    // console.table(projectArray);
-    // console.log(projectSelected);
-    
 })
 
 // window.localStorage.clear()
@@ -219,5 +152,5 @@ formProject.addEventListener('submit', (event) => {
 //     // // console.log(todoItemsArray);
 // });
 
-export {projects}
+export {projects, projectArray}
 

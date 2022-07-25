@@ -1,5 +1,6 @@
 import { projectItemsArray } from "./arrayInitialize";
 import * as cardFunctionalitiesDOM from "./cardFunctionalitiesDOM";
+import { projectArray } from "..";
 
 const appendToContent = function(item, index, array) {
     // create card 
@@ -43,15 +44,17 @@ const appendToContent = function(item, index, array) {
 };
 
 const appendToContentOnRemove = function (array, projArray) {
-    array.forEach(item => {
-        let index = array.indexOf(item, 0)
-        item.index = index;
-        const card = appendToContent(item, index, array);
-        cardFunctionalitiesDOM.assignCardID(card, item, index);
-        cardFunctionalitiesDOM.addRemoveFunctionality(card, item, index, array, projArray);
-        cardFunctionalitiesDOM.addDoneFunctionality(card, item, index, array, projArray);
-
-    })
+    if (array) {
+        array.forEach(item => {
+            let index = array.indexOf(item, 0)
+            item.index = index;
+            const card = appendToContent(item, index, array);
+            cardFunctionalitiesDOM.assignCardID(card, item, index);
+            cardFunctionalitiesDOM.addRemoveFunctionality(card, item, index, array, projectArray);
+            cardFunctionalitiesDOM.addDoneFunctionality(card, item, index, array, projectArray);
+    
+        })
+    }
 }
 
 const appendToProject = function(item, isSelected) {
@@ -100,8 +103,8 @@ const appendToProjectOnRemove = function (array) {
         item.index = index;
         const card = appendToProject(item, index, array);
         cardFunctionalitiesDOM.assignCardID(card, item, index);
-        cardFunctionalitiesDOM.addSelectFunctionality(card, item, index, array);
-        cardFunctionalitiesDOM.addRemoveFunctionality(card, item, index, array, array);
+        cardFunctionalitiesDOM.addSelectFunctionality(card, item, index, projectArray);
+        cardFunctionalitiesDOM.addRemoveFunctionality(card, item, index, projectArray, projectArray);
         
     })
 }

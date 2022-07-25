@@ -1,12 +1,14 @@
 // import './style.css' from '../style.css';
 import * as DOMStuff from './DOMStuff';
 import * as cardFunctionalitiesDOM from "./cardFunctionalitiesDOM";
+// import { projectArray } from '..';
 
 const adjustItemIndex = function (array, index, item) {
     // array.splice(index, 1);
     let indexPlaceholder = 0;
     array.forEach(card => {
         card.index = indexPlaceholder;
+        console.log(array);
         indexPlaceholder += 1;
     });
     // console.log(array);

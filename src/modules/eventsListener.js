@@ -53,9 +53,9 @@ function onSubmitForm(form, project, index, array) {
             cardFunctionalitiesDOM.addRemoveFunctionality(card, item, indexUse, projects[index], array);
             cardFunctionalitiesDOM.addDoneFunctionality(card, item, indexUse, projects[index], array);
         })
+        localStorage.setItem('projectArray', JSON.stringify(array));
+        localStorage.setItem('projects', JSON.stringify(projects));
     }
-    localStorage.setItem('projectArray', JSON.stringify(array));
-    localStorage.setItem('projects', JSON.stringify(projects));
 
 
     //loops through the current selected project's array and displays everything
