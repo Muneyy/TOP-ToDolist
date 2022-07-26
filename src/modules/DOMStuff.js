@@ -1,8 +1,9 @@
-import { projectItemsArray } from "./arrayInitialize";
 import * as cardFunctionalitiesDOM from "./cardFunctionalitiesDOM";
 import { projectArray } from "..";
 
 const appendToContent = function(item, index, array) {
+    // append a single card to tasks tab
+
     // create card 
     const card = document.createElement("div");
     card.classList.add("card-todo");
@@ -17,15 +18,8 @@ const appendToContent = function(item, index, array) {
     cardDate.textContent = item.date;
     cardPriority.textContent = item.priority;
 
-    
-
     // create remove button
     const contentToDo = document.querySelector(".content-todo");
-
-    //move this to index and just return thee card div?
-    // cardFunctionalities.assignCardID(card, item, index);
-    // cardFunctionalities.addRemoveFunctionality(card, item, index, array);
-    
 
     //append card content
     card.appendChild(cardTitle);
@@ -33,19 +27,21 @@ const appendToContent = function(item, index, array) {
     card.appendChild(cardDate);
     card.appendChild(cardPriority);
     
-
-    //get main content div to append the card to it
+    // if card(task) is marked done, add class done 
     if (item.done == 1) {
         card.classList.add("done");
     }
     
+    //get main content div to append the card to it
     contentToDo.appendChild(card);
     return card;
 };
 
+
 const appendToContentOnRemove = function (array, projArray) {
+    // every submit or remove wipes the entire tasks tab to reset indexes
+    // this function is responsible for displaying the correct tasks including removed and done tasks
     if (array) {
-        
         array.forEach(item => {
             let index = array.indexOf(item, 0)
             item.index = index;
@@ -67,48 +63,35 @@ const appendToProject = function(item, isSelected) {
     const cardTitle = document.createElement("h1");
     cardTitle.textContent = item.title;
 
+    // if project is selected, add class selected project to it
     if (item.selected == 1) {
         card.classList.add("selected-project")
     }
 
-
-    // create remove button
+    // get the project tab
     const contentProject = document.querySelector(".content-project");
 
-    
-    // cardFunctionalities.addSelectFunctionality(card, projectItemsArray, index);
-    // cardFunctionalities.assignCardID(card, item, uniqueCardId);
-
-    // NOTE: this also assigns the index as the id
-    // NOT GOOD, better to separate functionality
-    // Does logic outside of DOM such as setting index of objects
-    // cardFunctionalities.addRemoveFunctionality(card, index, contentProject, projectItemsArray, uniqueCardId, item);
-    
-
-    //append card content
-    // if (isSelected == 1) {
-    //     card.classList.add("selected-project");
-    // }
+    // append card content
     card.appendChild(cardTitle);
     
 
     //get main content div to append the card to it
-    
     contentProject.appendChild(card);
+
+    // return the card div to add functionalities to it
     return card;
 }
 
 const appendToProjectOnRemove = function (array) {
+    // every submit or remove wipes the entire projects tab to reset indexes
+    // this function is responsible for displaying the correct projects including the selected project
     array.forEach(item => {
         let index = array.indexOf(item, 0)
         item.index = index;
         const card = appendToProject(item, index, array);
         cardFunctionalitiesDOM.assignCardID(card, item, index);
-
-
         cardFunctionalitiesDOM.addSelectFunctionality(card, item, index, projectArray);
         cardFunctionalitiesDOM.addRemoveFunctionality(card, item, index, projectArray, projectArray);
-        
     })
 }
 
