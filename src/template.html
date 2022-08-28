@@ -6,7 +6,7 @@
     <title>To-Do List</title>
 </head>
 <body>
-    <button class="clear-window">Reset</button>
+    <!-- <button class="clear-window">Reset</button> -->
     <div class="whole-container">
         <div class="header">
             <p>To-Do List</p>
@@ -17,7 +17,7 @@
                     <form action="" id="add-project">
                         <div class="form-container">
                             <label for="project-title">Project Title</label>
-                            <input type="text" id="project-title" name="project-title" autocomplete="off" required value="Title">
+                            <input type="text" id="project-title" name="project-title" autocomplete="off" required placeholder="Title">
                             <input type="submit" id="submit" name="submit">
                         </div>
                     </form>
@@ -33,20 +33,19 @@
                 <form action="" id="add-todo">
                     <div class="form-container">
                         <label for="title">Title</label>
-                        <input type="text" id="title" name="title" autocomplete="off" required value="Title">
+                        <input type="text" id="title" name="title" autocomplete="off" required placeholder="Title">
                         <label for="description">Description</label>
-                        <input type="text" id="description" name="description" autocomplete="off" required value="Description">
+                        <input type="text" id="description" name="description" autocomplete="off" required placeholder="Description">
                         <label for="date">Date</label>
-                        <input type="date" id="date" name="date" autocomplete="off" required value="2018-07-22">
+                        <input type="date" id="date" name="date" autocomplete="off" required placeholder="2018-07-22">
                         <label for="priority">Priority</label>
-                        <input type="number" id="priority" name="priority" autocomplete="off" required value="1">
+                        <input type="number" id="priority" name="priority" autocomplete="off" required placeholder="1">
                         <input type="submit" id="submit" name="submit">
                     </div>
                 </form>
             </div>
             <div class="content-todo">
-                <p>Click on any project to continue where you left off!</p>
-            </div>
+                <p>Start by creating your very first project on the panel there on the left!</p>
         </div>
     </div>
     
