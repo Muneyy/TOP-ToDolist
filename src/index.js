@@ -10,10 +10,10 @@ let projectArray = [];
 let projects = [];
 
 // reset button to clear local storage
-// const clearWindow = document.querySelector(".clear-window");
-// clearWindow.addEventListener('click', () => {
-//     window.localStorage.clear();
-// });
+const clearWindow = document.querySelector(".clear-window");
+clearWindow.addEventListener('click', () => {
+    window.localStorage.clear();
+});
 
 // loads up all javascript arrays
 if (window.localStorage.getItem('projectArray')) {
